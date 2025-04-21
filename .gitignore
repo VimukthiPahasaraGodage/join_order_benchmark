@@ -1,0 +1,8 @@
+JOB_database/original/*
+JOB_database/processed/*
+JOB_database/imdb.tgz
+JOB_database/anaconda_projects/*
+JOB_database/.ipynb_checkpoints/*
+JOB_database/.virtual_documents/*
+JOB_database/anaconda_projects/db/*
+JOB_database/original/.ipynb_checkpoints/*
