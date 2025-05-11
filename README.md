@@ -15,6 +15,10 @@ at
 
 Cleaned CSV files that can be used to populate data in PostgreSQL database can be found at https://dms.uom.lk/s/cfYB6s64DQDCcNm
 
+Further cleaned CSV files(with no malformed rows when loading with OpenCSV library) that can be used for most cases(programmatical use cases, etc.) can be found at https://dms.uom.lk/s/tCPcHB8bQwbkLSo
+
+**Please note that the text field in the further cleaned dataset only contains [a-zA-Z0-9] characters. All other characters are filtered out to resolve malformed errors. The scripts used for filter can be found in "non_malformed" folder**
+
 ### Step-by-step instructions
 1. download `final_JOB_dataset.zip` file and extract the csv files to a folder
 
