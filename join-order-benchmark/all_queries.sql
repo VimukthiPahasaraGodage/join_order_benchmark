@@ -71,11 +71,11 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
+WHERE NOT cn.country_code = '[pl]'
   AND (cn.name LIKE '%Film%'
        OR cn.name LIKE '%Warner%')
-  AND ct.kind ='production companies'
-  AND k.keyword ='sequel'
+  AND ct.kind = 'production companies'
+  AND k.keyword = 'sequel'
   AND lt.link LIKE '%follow%'
   AND mc.note IS NULL
   AND t.production_year BETWEEN 1950 AND 2000
@@ -101,11 +101,10 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
-  AND (cn.name LIKE '%Film%'
-       OR cn.name LIKE '%Warner%')
-  AND ct.kind ='production companies'
-  AND k.keyword ='sequel'
+WHERE NOT cn.country_code = '[pl]'
+  AND (cn.name LIKE '%Film%' OR cn.name LIKE '%Warner%')
+  AND ct.kind = 'production companies'
+  AND k.keyword = 'sequel'
   AND lt.link LIKE '%follows%'
   AND mc.note IS NULL
   AND t.production_year = 1998
@@ -132,14 +131,11 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
-  AND (cn.name LIKE '20th Century Fox%'
-       OR cn.name LIKE 'Twentieth Century Fox%')
-  AND ct.kind != 'production companies'
+WHERE NOT cn.country_code = '[pl]'
+  AND (cn.name LIKE '20th Century Fox%' OR cn.name LIKE 'Twentieth Century Fox%')
+  AND NOT ct.kind = 'production companies'
   AND ct.kind IS NOT NULL
-  AND k.keyword IN ('sequel',
-                    'revenge',
-                    'based-on-novel')
+  AND k.keyword IN ('sequel', 'revenge', 'based-on-novel')
   AND mc.note IS NOT NULL
   AND t.production_year > 1950
   AND lt.id = ml.link_type_id
@@ -164,12 +160,10 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
-  AND ct.kind != 'production companies'
+WHERE NOT cn.country_code = '[pl]'
+  AND NOT ct.kind = 'production companies'
   AND ct.kind IS NOT NULL
-  AND k.keyword IN ('sequel',
-                    'revenge',
-                    'based-on-novel')
+  AND k.keyword IN ('sequel', 'revenge', 'based-on-novel')
   AND mc.note IS NOT NULL
   AND t.production_year > 1950
   AND lt.id = ml.link_type_id
@@ -316,14 +310,13 @@ FROM company_name AS cn,
      movie_info AS mi,
      movie_info_idx AS miidx,
      title AS t
-WHERE cn.country_code ='[us]'
-  AND ct.kind ='production companies'
-  AND it.info ='rating'
-  AND it2.info ='release dates'
-  AND kt.kind ='movie'
-  AND t.title != ''
-  AND (t.title LIKE '%Champion%'
-       OR t.title LIKE '%Loser%')
+WHERE cn.country_code = '[us]'
+  AND ct.kind = 'production companies'
+  AND it.info = 'rating'
+  AND it2.info = 'release dates'
+  AND kt.kind = 'movie'
+  AND NOT t.title = ''
+  AND (t.title LIKE '%Champion%' OR t.title LIKE '%Loser%')
   AND mi.movie_id = t.id
   AND it2.id = mi.info_type_id
   AND kt.id = t.kind_id
@@ -348,14 +341,13 @@ FROM company_name AS cn,
      movie_info AS mi,
      movie_info_idx AS miidx,
      title AS t
-WHERE cn.country_code ='[us]'
-  AND ct.kind ='production companies'
-  AND it.info ='rating'
-  AND it2.info ='release dates'
-  AND kt.kind ='movie'
-  AND t.title != ''
-  AND (t.title LIKE 'Champion%'
-       OR t.title LIKE 'Loser%')
+WHERE cn.country_code = '[us]'
+  AND ct.kind = 'production companies'
+  AND it.info = 'rating'
+  AND it2.info = 'release dates'
+  AND kt.kind = 'movie'
+  AND NOT t.title = ''
+  AND (t.title LIKE 'Champion%' OR t.title LIKE 'Loser%')
   AND mi.movie_id = t.id
   AND it2.id = mi.info_type_id
   AND kt.id = t.kind_id
@@ -1332,21 +1324,14 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
-  AND (cn.name LIKE '%Film%'
-       OR cn.name LIKE '%Warner%')
-  AND ct.kind ='production companies'
-  AND k.keyword ='sequel'
+WHERE NOT cn.country_code = '[pl]'
+  AND (cn.name LIKE '%Film%' OR cn.name LIKE '%Warner%')
+  AND ct.kind = 'production companies'
+  AND k.keyword = 'sequel'
   AND lt.link LIKE '%follow%'
   AND mc.note IS NULL
-  AND mi.info IN ('Sweden',
-                  'Norway',
-                  'Germany',
-                  'Denmark',
-                  'Swedish',
-                  'Denish',
-                  'Norwegian',
-                  'German')
+  AND mi.info IN ('Sweden', 'Norway', 'Germany', 'Denmark',
+                  'Swedish', 'Denish', 'Norwegian', 'German')
   AND t.production_year BETWEEN 1950 AND 2000
   AND lt.id = ml.link_type_id
   AND ml.movie_id = t.id
@@ -1375,15 +1360,13 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
-  AND (cn.name LIKE '%Film%'
-       OR cn.name LIKE '%Warner%')
-  AND ct.kind ='production companies'
-  AND k.keyword ='sequel'
+WHERE NOT cn.country_code = '[pl]'
+  AND (cn.name LIKE '%Film%' OR cn.name LIKE '%Warner%')
+  AND ct.kind = 'production companies'
+  AND k.keyword = 'sequel'
   AND lt.link LIKE '%follow%'
   AND mc.note IS NULL
-  AND mi.info IN ('Germany',
-                  'German')
+  AND mi.info IN ('Germany', 'German')
   AND t.production_year BETWEEN 2000 AND 2010
   AND lt.id = ml.link_type_id
   AND ml.movie_id = t.id
@@ -1412,22 +1395,16 @@ FROM company_name AS cn,
      movie_keyword AS mk,
      movie_link AS ml,
      title AS t
-WHERE cn.country_code !='[pl]'
-  AND (cn.name LIKE '%Film%'
-       OR cn.name LIKE '%Warner%')
-  AND ct.kind ='production companies'
-  AND k.keyword ='sequel'
+WHERE NOT cn.country_code = '[pl]'
+  AND (cn.name LIKE '%Film%' OR cn.name LIKE '%Warner%')
+  AND ct.kind = 'production companies'
+  AND k.keyword = 'sequel'
   AND lt.link LIKE '%follow%'
   AND mc.note IS NULL
-  AND mi.info IN ('Sweden',
-                  'Norway',
-                  'Germany',
-                  'Denmark',
-                  'Swedish',
-                  'Denish',
-                  'Norwegian',
-                  'German',
-                  'English')
+  AND mi.info IN (
+      'Sweden', 'Norway', 'Germany', 'Denmark',
+      'Swedish', 'Denish', 'Norwegian', 'German', 'English'
+  )
   AND t.production_year BETWEEN 1950 AND 2010
   AND lt.id = ml.link_type_id
   AND ml.movie_id = t.id
@@ -1458,7 +1435,7 @@ FROM company_name AS cn,
      movie_info_idx AS mi_idx,
      movie_keyword AS mk,
      title AS t
-WHERE cn.country_code != '[us]'
+WHERE NOT cn.country_code = '[us]'
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -1506,7 +1483,7 @@ FROM company_name AS cn,
      movie_info_idx AS mi_idx,
      movie_keyword AS mk,
      title AS t
-WHERE cn.country_code != '[us]'
+WHERE (NOT cn.country_code = '[us]' OR cn.country_code IS NULL)
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -1554,7 +1531,7 @@ FROM company_name AS cn,
      movie_info_idx AS mi_idx,
      movie_keyword AS mk,
      title AS t
-WHERE cn.country_code != '[us]'
+WHERE (NOT cn.country_code = '[us]' OR cn.country_code IS NULL)
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -1608,7 +1585,7 @@ FROM company_name AS cn,
      movie_info_idx AS mi_idx,
      movie_keyword AS mk,
      title AS t
-WHERE cn.country_code != '[us]'
+WHERE NOT (cn.country_code = '[us]')
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -2174,11 +2151,11 @@ FROM complete_cast AS cc,
 WHERE cct1.kind IN ('cast',
                     'crew')
   AND cct2.kind = 'complete'
-  AND cn.country_code !='[pl]'
+  AND NOT (cn.country_code = '[pl]')
   AND (cn.name LIKE '%Film%'
        OR cn.name LIKE '%Warner%')
-  AND ct.kind ='production companies'
-  AND k.keyword ='sequel'
+  AND ct.kind = 'production companies'
+  AND k.keyword = 'sequel'
   AND lt.link LIKE '%follow%'
   AND mc.note IS NULL
   AND mi.info IN ('Sweden',
@@ -2226,7 +2203,7 @@ FROM complete_cast AS cc,
 WHERE cct1.kind IN ('cast',
                     'crew')
   AND cct2.kind = 'complete'
-  AND cn.country_code !='[pl]'
+  AND NOT (cn.country_code ='[pl]')
   AND (cn.name LIKE '%Film%'
        OR cn.name LIKE '%Warner%')
   AND ct.kind ='production companies'
@@ -2277,7 +2254,7 @@ FROM complete_cast AS cc,
      title AS t
 WHERE cct1.kind = 'cast'
   AND cct2.kind LIKE 'complete%'
-  AND cn.country_code !='[pl]'
+  AND NOT (cn.country_code ='[pl]')
   AND (cn.name LIKE '%Film%'
        OR cn.name LIKE '%Warner%')
   AND ct.kind ='production companies'
@@ -2334,8 +2311,8 @@ FROM complete_cast AS cc,
      movie_keyword AS mk,
      title AS t
 WHERE cct1.kind = 'crew'
-  AND cct2.kind != 'complete+verified'
-  AND cn.country_code != '[us]'
+  AND NOT (cct2.kind = 'complete+verified')
+  AND NOT (cn.country_code = '[us]')
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -2400,8 +2377,8 @@ FROM complete_cast AS cc,
      movie_keyword AS mk,
      title AS t
 WHERE cct1.kind = 'crew'
-  AND cct2.kind != 'complete+verified'
-  AND cn.country_code != '[us]'
+  AND NOT (cct2.kind = 'complete+verified')
+  AND NOT (cn.country_code = '[us]')
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -2461,7 +2438,7 @@ FROM complete_cast AS cc,
      title AS t
 WHERE cct1.kind = 'cast'
   AND cct2.kind = 'complete'
-  AND cn.country_code != '[us]'
+  AND NOT (cn.country_code = '[us]')
   AND it1.info = 'countries'
   AND it2.info = 'rating'
   AND k.keyword IN ('murder',
@@ -3266,7 +3243,7 @@ FROM company_name AS cn1,
      movie_link AS ml,
      title AS t1,
      title AS t2
-WHERE cn1.country_code != '[us]'
+WHERE NOT (cn1.country_code = '[us]')
   AND it1.info = 'rating'
   AND it2.info = 'rating'
   AND kt1.kind IN ('tv series',
